@@ -15,7 +15,13 @@ public class SimplifiedRational implements IRational {
      * @throws IllegalArgumentException if a <= 0 or b < 0
      */
     public static int gcd(int a, int b) throws IllegalArgumentException {
-        throw new MissingImplementationException();
+        if (a <= 0 || b < 0) {
+            throw new IllegalArgumentException();
+        }
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a%b);
     }
 
     /**
