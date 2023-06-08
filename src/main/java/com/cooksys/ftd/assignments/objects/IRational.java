@@ -54,7 +54,11 @@ interface IRational {
 	 *             if the numerator of this rational value is 0
 	 */
 	default IRational invert() throws IllegalStateException {
-		throw new MissingImplementationException();
+		if (getNumerator() == 0) {
+			throw new IllegalStateException();
+		} else {
+			return construct(getDenominator(), getNumerator());
+		}
 	}
 
 	/**
@@ -69,7 +73,17 @@ interface IRational {
 	 *             if that is null
 	 */
 	default IRational add(IRational that) throws IllegalArgumentException {
-		throw new MissingImplementationException();
+		if(that == null) {
+			throw new IllegalArgumentException();
+		}
+
+		// Create variables to make return formula more readable
+		int n1 = this.getNumerator();
+		int d1 = this.getDenominator();
+		int n2 = that.getNumerator();
+		int d2 = that.getDenominator();
+
+		return construct(((n1 * d2) + (n2 * d1)),(d1 * d2));
 	}
 
 	/**
@@ -84,7 +98,7 @@ interface IRational {
 	 *             if that is null
 	 */
 	default IRational sub(IRational that) throws IllegalArgumentException {
-		throw new MissingImplementationException();
+
 	}
 
 	/**
