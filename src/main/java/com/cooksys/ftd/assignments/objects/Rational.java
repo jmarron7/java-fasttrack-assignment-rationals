@@ -3,6 +3,9 @@ package com.cooksys.ftd.assignments.objects;
 import com.cooksys.ftd.assignments.objects.util.MissingImplementationException;
 
 public class Rational implements IRational {
+
+    private int numerator;
+    private int denominator;
     /**
      * Constructor for rational values of the type:
      * <p>
@@ -15,7 +18,12 @@ public class Rational implements IRational {
      * @throws IllegalArgumentException if the given denominator is 0
      */
     public Rational(int numerator, int denominator) throws IllegalArgumentException {
-        throw new MissingImplementationException();
+        if (denominator == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
     /**
