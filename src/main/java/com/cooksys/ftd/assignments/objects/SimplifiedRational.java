@@ -3,6 +3,9 @@ package com.cooksys.ftd.assignments.objects;
 import com.cooksys.ftd.assignments.objects.util.MissingImplementationException;
 
 public class SimplifiedRational implements IRational {
+
+    private int numerator;
+    private int denominator;
     /**
      * Determines the greatest common denominator for the given values
      *
@@ -53,7 +56,7 @@ public class SimplifiedRational implements IRational {
      */
     @Override
     public int getNumerator() {
-        throw new MissingImplementationException();
+        return numerator;
     }
 
     /**
@@ -61,7 +64,7 @@ public class SimplifiedRational implements IRational {
      */
     @Override
     public int getDenominator() {
-        throw new MissingImplementationException();
+        return denominator;
     }
 
     /**
