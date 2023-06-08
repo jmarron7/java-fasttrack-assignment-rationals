@@ -22,18 +22,8 @@ public class Rational implements IRational {
             throw new IllegalArgumentException();
         }
 
-        // checks to appropriately format positive and negative Rationals
-        if (numerator < 0 && denominator < 0) {
-            this.numerator = Math.abs(numerator);
-            this.denominator = Math.abs(denominator);
-        } else if (numerator < 0) {
-            this.numerator = Math.abs(numerator);
-        } else if (denominator < 0) {
-            this.denominator = Math.abs(denominator);
-        } else {
-            this.numerator = numerator;
-            this.denominator = denominator;
-        }
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
     /**
@@ -100,6 +90,13 @@ public class Rational implements IRational {
      */
     @Override
     public String toString() {
-        return (getNumerator() + "/" + getDenominator());
+        int realNumerator = getNumerator();
+        int realDenominator = getDenominator();
+
+        if (getDenominator() < 0) {
+            realNumerator = realNumerator * -1;
+            realDenominator = realDenominator * -1;
+        }
+        return (realNumerator + "/" + realDenominator);
     }
 }
