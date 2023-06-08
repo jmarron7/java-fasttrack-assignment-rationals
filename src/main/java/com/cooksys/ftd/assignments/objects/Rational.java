@@ -55,7 +55,10 @@ public class Rational implements IRational {
      */
     @Override
     public Rational construct(int numerator, int denominator) throws IllegalArgumentException {
-        throw new MissingImplementationException();
+        if (getDenominator() == 0) {
+            throw new IllegalArgumentException();
+        }
+        return new Rational(numerator, denominator);
     }
 
     /**
