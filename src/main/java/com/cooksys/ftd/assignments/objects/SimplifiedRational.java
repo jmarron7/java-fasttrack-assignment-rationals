@@ -38,7 +38,15 @@ public class SimplifiedRational implements IRational {
      * @throws IllegalArgumentException if the given denominator is 0
      */
     public static int[] simplify(int numerator, int denominator) throws IllegalArgumentException {
-        throw new MissingImplementationException();
+        if (denominator == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        int gcd = gcd(numerator, denominator);
+        int simplifiedNumerator = numerator / gcd;
+        int simplifiedDenominator = denominator / gcd;
+
+        return new int[]{simplifiedNumerator, simplifiedDenominator};
     }
 
     /**
