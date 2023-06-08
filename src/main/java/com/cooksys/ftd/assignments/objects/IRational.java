@@ -144,6 +144,14 @@ interface IRational {
 	 *             if that is null or if the numerator of that is 0
 	 */
 	default IRational div(IRational that) throws IllegalArgumentException {
-		throw new MissingImplementationException();
+		if (that == null || that.getNumerator() == 0) {
+			throw new IllegalArgumentException();
+		}
+		int n1 = this.getNumerator();
+		int d1 = this.getDenominator();
+		int n2 = that.getNumerator();
+		int d2 = that.getDenominator();
+
+		return construct((n1 * d2), (d1 * n2));
 	}
 }
