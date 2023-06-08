@@ -135,6 +135,13 @@ public class SimplifiedRational implements IRational {
      */
     @Override
     public String toString() {
-        throw new MissingImplementationException();
+        int realNumerator = getNumerator();
+        int realDenominator = getDenominator();
+
+        if (getDenominator() < 0) {
+            realNumerator = realNumerator * -1;
+            realDenominator = realDenominator * -1;
+        }
+        return (realNumerator + "/" + realDenominator);
     }
 }
