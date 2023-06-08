@@ -43,10 +43,8 @@ public class SimplifiedRational implements IRational {
         }
 
         int gcd = gcd(numerator, denominator);
-        int simplifiedNumerator = numerator / gcd;
-        int simplifiedDenominator = denominator / gcd;
 
-        return new int[]{simplifiedNumerator, simplifiedDenominator};
+        return new int[]{(numerator / gcd), (denominator / gcd)};
     }
 
     /**
@@ -65,9 +63,14 @@ public class SimplifiedRational implements IRational {
         if (denominator == 0) {
             throw new IllegalArgumentException();
         }
-
-        this.numerator = numerator;
-        this.denominator = denominator;
+        if (numerator == 0) {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        } else {
+            int[] simplified = simplify(numerator, denominator);
+            this.numerator = simplified[0];
+            this.denominator = simplified[1];
+        }
     }
 
     /**
@@ -114,16 +117,15 @@ public class SimplifiedRational implements IRational {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
+        if (this == obj) { // check refs
             return true;
         }
-
-        if(!(obj instanceof SimplifiedRational)) {
+        if (obj == null || this.getClass() != obj.getClass()) {
             return false;
         }
-        SimplifiedRational that = (SimplifiedRational) obj;
-
-        return this.getNumerator() == that.getNumerator() && this.getDenominator() == that.getDenominator();
+        SimplifiedRational simpObj = (SimplifiedRational) obj;
+        return (numerator == simpObj.getNumerator() &&
+                denominator == simpObj.getDenominator());
     }
 
     /**
