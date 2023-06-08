@@ -69,7 +69,16 @@ public class Rational implements IRational {
      */
     @Override
     public boolean equals(Object obj) {
-        throw new MissingImplementationException();
+        if (this == obj) {
+            return true;
+        }
+
+        if(!(obj instanceof Rational)) {
+            return false;
+        }
+        Rational that = (Rational) obj;
+
+        return this.getNumerator() == that.getNumerator() && this.getDenominator() == that.getDenominator();
     }
 
     /**
