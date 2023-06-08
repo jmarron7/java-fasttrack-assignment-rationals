@@ -90,6 +90,6 @@ public class Rational implements IRational {
      */
     @Override
     public String toString() {
-        throw new MissingImplementationException();
+        return (getNumerator() + "/" + getDenominator());
     }
 }
