@@ -62,7 +62,12 @@ public class SimplifiedRational implements IRational {
      * @throws IllegalArgumentException if the given denominator is 0
      */
     public SimplifiedRational(int numerator, int denominator) throws IllegalArgumentException {
-        throw new MissingImplementationException();
+        if (denominator == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
     /**
