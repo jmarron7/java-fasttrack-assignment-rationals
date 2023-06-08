@@ -114,7 +114,16 @@ public class SimplifiedRational implements IRational {
      */
     @Override
     public boolean equals(Object obj) {
-        throw new MissingImplementationException();
+        if (this == obj) {
+            return true;
+        }
+
+        if(!(obj instanceof SimplifiedRational)) {
+            return false;
+        }
+        SimplifiedRational that = (SimplifiedRational) obj;
+
+        return this.getNumerator() == that.getNumerator() && this.getDenominator() == that.getDenominator();
     }
 
     /**
