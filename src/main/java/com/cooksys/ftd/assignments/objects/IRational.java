@@ -98,7 +98,15 @@ interface IRational {
 	 *             if that is null
 	 */
 	default IRational sub(IRational that) throws IllegalArgumentException {
+		if (that == null) {
+			throw new IllegalArgumentException();
+		}
+		int n1 = this.getNumerator();
+		int d1 = this.getDenominator();
+		int n2 = that.getNumerator();
+		int d2 = that.getDenominator();
 
+		return construct(((n1 * d2) - (n2 * d1)),(d1 * d2));
 	}
 
 	/**
