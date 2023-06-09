@@ -42,7 +42,7 @@ public class SimplifiedRational implements IRational {
             throw new IllegalArgumentException();
         }
 
-        int gcd = gcd(numerator, denominator);
+        int gcd = gcd(Math.abs(numerator), Math.abs(denominator));
 
         return new int[]{(numerator / gcd), (denominator / gcd)};
     }
@@ -120,12 +120,13 @@ public class SimplifiedRational implements IRational {
         if (this == obj) { // check refs
             return true;
         }
-        if (obj == null || this.getClass() != obj.getClass()) {
+        if (!(obj instanceof SimplifiedRational)) {
             return false;
         }
-        SimplifiedRational simpObj = (SimplifiedRational) obj;
-        return (numerator == simpObj.getNumerator() &&
-                denominator == simpObj.getDenominator());
+        SimplifiedRational that = (SimplifiedRational) obj;
+
+        return (this.getNumerator() == that.getNumerator() &&
+                this.getDenominator() == that.getDenominator());
     }
 
     /**
